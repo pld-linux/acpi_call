@@ -16,7 +16,7 @@ Version:	1.1.0
 Release:	%{rel}
 License:	GPL v2
 Group:		Base/Kernel
-Source0:	https://github.com/mkottman/acpi_call/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/mkottman/acpi_call/archive/v%{version}/%{pname}-%{version}.tar.gz
 # Source0-md5:	f69d40e130b0e5ed17ce8adb19e6dda1
 URL:		https://github.com/mkottman/acpi_call
 %if %{with kernel}
