@@ -8,21 +8,16 @@
 %undefine	with_dist_kernel
 %endif
 
-#
-# main package.
-#
 %define		rel	0.3
 %define		pname	acpi_call
-%define		snap	20130705
 Summary:	A linux kernel module that enables calls to ACPI methods through /proc/acpi/call
-Name:		acpi_call%{_alt_kernel}
-Version:	%{snap}
-Release:	0.%{snap}.%{rel}
+Name:		%{pname}%{_alt_kernel}
+Version:	1.1.0
+Release:	%{rel}
 License:	GPL v2
 Group:		Base/Kernel
-# snap from "git clone https://github.com/mkottman/acpi_call.git"
-Source0:	http://sls.warszawa.pl/%{name}-%{version}.tar.gz
-# Source0-md5:	f4eb8bb4d4413a5ae65aa7d77f4112c0
+Source0:	https://github.com/mkottman/acpi_call/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	f69d40e130b0e5ed17ce8adb19e6dda1
 URL:		https://github.com/mkottman/acpi_call
 %if %{with kernel}
 %if %{with dist_kernel}
@@ -39,7 +34,7 @@ A linux kernel module that enables calls to ACPI methods through
 
 %package -n kernel%{_alt_kernel}-misc-acpi_call
 Summary:	A linux kernel module that enables calls to ACPI methods through /proc/acpi/call
-Release:	0.%{snap}.%{rel}@%{_kernel_ver_str}
+Release:	%{rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
 %if %{with dist_kernel}
@@ -52,7 +47,7 @@ A linux kernel module that enables calls to ACPI methods through
 /proc/acpi/call
 
 %prep
-%setup -q -n acpi_call
+%setup -q
 
 %build
 %if %{with kernel}
