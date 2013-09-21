@@ -25,7 +25,9 @@ Source0:	http://sls.warszawa.pl/%{name}-%{version}.tar.gz
 # Source0-md5:	f4eb8bb4d4413a5ae65aa7d77f4112c0
 URL:		https://github.com/mkottman/acpi_call
 %if %{with kernel}
-%{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.20.2}
+%if %{with dist_kernel}
+BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.20.2
+%endif
 BuildRequires:	rpmbuild(macros) >= 1.379
 %endif
 ExclusiveArch:	%{ix86} %{x8664}
