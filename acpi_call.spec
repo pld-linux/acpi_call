@@ -18,6 +18,7 @@ License:	GPL v2
 Group:		Base/Kernel
 Source0:	https://github.com/mkottman/acpi_call/archive/v%{version}/%{pname}-%{version}.tar.gz
 # Source0-md5:	f69d40e130b0e5ed17ce8adb19e6dda1
+Patch0:		%{pname}-build.patch
 URL:		https://github.com/mkottman/acpi_call
 %if %{with kernel}
 %if %{with dist_kernel}
@@ -48,6 +49,7 @@ A linux kernel module that enables calls to ACPI methods through
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %if %{with kernel}

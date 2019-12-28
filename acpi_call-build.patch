@@ -1,0 +1,13 @@
+diff -urN acpi_call-1.1.0.orig/acpi_call.c acpi_call-1.1.0/acpi_call.c
+--- acpi_call-1.1.0.orig/acpi_call.c	2013-07-05 18:06:13.000000000 +0200
++++ acpi_call-1.1.0/acpi_call.c	2019-12-28 23:52:40.624217110 +0100
+@@ -6,7 +6,8 @@
+ #include <linux/proc_fs.h>
+ #include <linux/slab.h>
+ #include <asm/uaccess.h>
+-#include <acpi/acpi.h>
++#include <linux/acpi.h>
++#include <linux/uaccess.h>
+ 
+ MODULE_LICENSE("GPL");
+ 
