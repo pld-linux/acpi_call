@@ -93,6 +93,8 @@ cp -a installed/* $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%if %{with userspace}
 %files -n %{pname}-scripts
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_datadir}/acpi_call/*.sh
+%endif
