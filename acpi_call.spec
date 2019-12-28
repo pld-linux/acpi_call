@@ -28,6 +28,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 A linux kernel module that enables calls to ACPI methods through
 /proc/acpi/call.
 
+%package -n %{pname}-scripts
+Summary:	This package contains sample scripts for acpi_call kernel module
+Group:		Applications/System
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
+
+%description -n %{pname}-scripts
+This package contains sample scripts for acpi_call kernel module.
+
 %define	kernel_pkg()\
 %package -n kernel%{_alt_kernel}-misc-acpi_call\
 Summary:	A linux kernel module that enables calls to ACPI methods through /proc/acpi/call\
@@ -69,10 +79,20 @@ A linux kernel module that enables calls to ACPI methods through\
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%if %{with kernel}
 install -d $RPM_BUILD_ROOT
+
+%if %{with userspace}
+install -d $RPM_BUILD_ROOT%{_datadir}/acpi_call
+cp -a examples/* $RPM_BUILD_ROOT%{_datadir}/acpi_call
+%endif
+
+%if %{with kernel}
 cp -a installed/* $RPM_BUILD_ROOT
 %endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%files -n %{pname}-scripts
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_datadir}/acpi_call/*.sh
