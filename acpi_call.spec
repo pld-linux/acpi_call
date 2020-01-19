@@ -96,5 +96,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with userspace}
 %files -n %{pname}-scripts
 %defattr(644,root,root,755)
+%dir %{_datadir}/acpi_call
 %attr(755,root,root) %{_datadir}/acpi_call/*.sh
 %endif
