@@ -31,9 +31,7 @@ A linux kernel module that enables calls to ACPI methods through
 %package -n %{pname}-scripts
 Summary:	This package contains sample scripts for acpi_call kernel module
 Group:		Applications/System
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n %{pname}-scripts
 This package contains sample scripts for acpi_call kernel module.
